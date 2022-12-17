@@ -41,6 +41,13 @@ public class CompanyController {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * It updates the company name.
+     *
+     * @param companyId The id of the company to update.
+     * @param body The request body.
+     * @return A ResponseEntity object is being returned.
+     */
     @PutMapping("/update/{companyId}")
     public ResponseEntity<Company> updateCompany(@PathVariable Long companyId,
                                                  @RequestBody UpdateCompany body) {

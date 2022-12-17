@@ -56,6 +56,14 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
+    /**
+     * It takes an employeeId, a name, a surname and a salary, and updates the employee with the given employeeId with the
+     * given name, surname and salary
+     *
+     * @param employeeId The id of the employee to be updated.
+     * @param body The request body.
+     * @return ResponseEntity<Employee>
+     */
     @PutMapping("/update/{employeeId}")
     public ResponseEntity<Employee> updateEmployeeData(@PathVariable Long employeeId,
                                                        @RequestBody UpdateEmployee body) {

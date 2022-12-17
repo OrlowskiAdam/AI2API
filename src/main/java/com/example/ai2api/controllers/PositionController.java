@@ -55,6 +55,13 @@ public class PositionController {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * Update the position with the given id, and return the updated position
+     *
+     * @param positionId The id of the position to be updated.
+     * @param body The request body.
+     * @return A ResponseEntity object is being returned.
+     */
     @PutMapping("/update/{positionId}")
     public ResponseEntity<Position> updatePosition(@PathVariable Long positionId,
                                                    @RequestBody UpdatePosition body) {
