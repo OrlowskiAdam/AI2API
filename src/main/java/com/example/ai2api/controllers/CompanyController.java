@@ -2,6 +2,7 @@ package com.example.ai2api.controllers;
 
 import com.example.ai2api.model.Company;
 import com.example.ai2api.payload.CreateCompany;
+import com.example.ai2api.payload.UpdateCompany;
 import com.example.ai2api.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -38,5 +39,12 @@ public class CompanyController {
     public ResponseEntity<?> deleteCompany(@PathVariable Long companyId) {
         companyService.deleteCompany(companyId);
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/update/{companyId}")
+    public ResponseEntity<Company> updateCompany(@PathVariable Long companyId,
+                                                 @RequestBody UpdateCompany body) {
+        Company company =companyService.updateCompany(companyId, body.getName());
+        return ResponseEntity.ok(company);
     }
 }

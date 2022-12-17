@@ -33,6 +33,7 @@ public class Employee {
     private String surname;
 
     private Long pesel;
+    private double salary;
 
     @ManyToMany
     @JsonIgnore

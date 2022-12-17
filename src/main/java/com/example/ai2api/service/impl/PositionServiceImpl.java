@@ -17,6 +17,7 @@ import java.util.Set;
 public class PositionServiceImpl implements PositionService {
     private final CompanyService companyService;
     private final PositionRepository positionRepository;
+
     @Override
     public List<Position> getCompanyPositions(Long companyId) {
         Company company = companyService.getCompanyById(companyId);
@@ -56,5 +57,18 @@ public class PositionServiceImpl implements PositionService {
     public void deletePositions(Company company, Set<Long> positionIds) {
         List<Position> positions = getCompanyPositionsById(company, positionIds);
         positionRepository.deleteAll(positions);
+    }
+
+    @Override
+    public Position updatePosition(Long positionId, String positionName) {
+        Position position = positionRepository.findById(positionId)
+                .orElseThrow(() -> new ResourceNotFoundException("Position not found"));
+
+        if (positionName != null && !positionName.isEmpty()) {
+            position.setPositionName(positionName);
+        }
+        positionRepository.save(position);
+        return position;
+
     }
 }

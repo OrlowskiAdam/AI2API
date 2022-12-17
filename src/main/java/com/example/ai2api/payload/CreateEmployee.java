@@ -13,6 +13,8 @@ public class CreateEmployee {
     private String surname;
     @NotNull(message = "Pesel cannot be null")
     private Long pesel;
+    @NotNull(message = "Salary cannot be null")
+    private double salary;
     @NotNull(message = "Companies cannot be null")
     private Long companyId;
     @NotNull(message = "Company positions cannot be null")

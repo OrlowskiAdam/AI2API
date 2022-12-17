@@ -18,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
     private final CompanyService companyService;
-    private final PositionService positionService;
 
     private final EmployeeRepository employeeRepository;
 
@@ -72,6 +71,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteEmployee(Long employeeId) {
         employeeRepository.deleteById(employeeId);
+    }
+
+    @Override
+    public Employee updateEmployee(Long id, String name, String surname, double salary) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+        if (name != null && !name.isEmpty()) {
+            employee.setName(name);
+        }
+        if (surname != null && !surname.isEmpty()) {
+            employee.setSurname(surname);
+        }
+        if (salary > 0) {
+            employee.setSalary(salary);
+        }
+        employeeRepository.save(employee);
+        return employee;
     }
 
     @Override

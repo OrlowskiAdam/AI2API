@@ -5,6 +5,7 @@ import com.example.ai2api.model.Position;
 import com.example.ai2api.payload.CreatePosition;
 import com.example.ai2api.payload.DeletePositions;
 import com.example.ai2api.payload.GetCompanyPositions;
+import com.example.ai2api.payload.UpdatePosition;
 import com.example.ai2api.service.CompanyService;
 import com.example.ai2api.service.PositionService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -53,5 +53,12 @@ public class PositionController {
         Company company = companyService.getCompanyById(body.getCompanyId());
         positionService.deletePositions(company, body.getPositionIds());
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/update/{positionId}")
+    public ResponseEntity<Position> updatePosition(@PathVariable Long positionId,
+                                                   @RequestBody UpdatePosition body) {
+        Position position = positionService.updatePosition(positionId, body.getPositionName());
+        return ResponseEntity.ok(position);
     }
 }

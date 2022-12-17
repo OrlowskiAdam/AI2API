@@ -16,4 +16,6 @@ public interface PositionService {
 
     void deletePosition(Company company, Long positionId);
     void deletePositions(Company company, Set<Long> positionIds);
+
+    Position updatePosition(Long positionId, String positionName);
 }

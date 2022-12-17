@@ -44,4 +44,16 @@ public class CompanyServiceImpl implements CompanyService {
         company.getPositions().forEach(position -> position.setCompanies(null));
         companyRepository.delete(company);
     }
+
+    @Override
+    public Company updateCompany(Long companyId, String name) {
+        Company company = companyRepository.findById(companyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Company not found"));
+
+        if (name != null && !name.isEmpty()) {
+            company.setName(name);
+        }
+        companyRepository.save(company);
+        return company;
+    }
 }

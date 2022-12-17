@@ -3,10 +3,7 @@ package com.example.ai2api.controllers;
 import com.example.ai2api.model.Company;
 import com.example.ai2api.model.Employee;
 import com.example.ai2api.model.Position;
-import com.example.ai2api.payload.CreateEmployee;
-import com.example.ai2api.payload.RemoveEmployeeCompany;
-import com.example.ai2api.payload.SetEmployeeCompany;
-import com.example.ai2api.payload.SetEmployeePositionsInCompany;
+import com.example.ai2api.payload.*;
 import com.example.ai2api.service.CompanyService;
 import com.example.ai2api.service.EmployeeService;
 import com.example.ai2api.service.PositionService;
@@ -15,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -57,6 +53,13 @@ public class EmployeeController {
         Employee employee = employeeService.getEmployeeById(body.getEmployeeId());
         List<Position> positions = positionService.getCompanyPositionsById(company, body.getPositionIds());
         employee = employeeService.addEmployeeToCompany(employee, company, positions);
+        return ResponseEntity.ok(employee);
+    }
+
+    @PutMapping("/update/{employeeId}")
+    public ResponseEntity<Employee> updateEmployeeData(@PathVariable Long employeeId,
+                                                       @RequestBody UpdateEmployee body) {
+        Employee employee = employeeService.updateEmployee(employeeId, body.getName(), body.getSurname(), body.getSalary());
         return ResponseEntity.ok(employee);
     }
 
