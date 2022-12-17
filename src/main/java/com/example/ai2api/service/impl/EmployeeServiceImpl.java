@@ -8,7 +8,6 @@ import com.example.ai2api.model.Position;
 import com.example.ai2api.repository.EmployeeRepository;
 import com.example.ai2api.service.CompanyService;
 import com.example.ai2api.service.EmployeeService;
-import com.example.ai2api.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +44,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee createEmployee(String name, String surname, Long pesel, Company company, List<Position> position) {
-        Employee employee = new Employee(name, surname, pesel, company, position);
+    public Employee createEmployee(String name, String surname, Long pesel, double salary, Company company, List<Position> position) {
+        Employee employee = new Employee(name, surname, pesel, salary, company, position);
         return employeeRepository.save(employee);
     }
 

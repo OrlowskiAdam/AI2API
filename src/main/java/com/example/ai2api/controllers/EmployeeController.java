@@ -41,6 +41,7 @@ public class EmployeeController {
                 createEmployee.getName(),
                 createEmployee.getSurname(),
                 createEmployee.getPesel(),
+                createEmployee.getSalary(),
                 company,
                 positions
         );
@@ -61,7 +62,7 @@ public class EmployeeController {
      * given name, surname and salary
      *
      * @param employeeId The id of the employee to be updated.
-     * @param body The request body.
+     * @param body       The request body.
      * @return ResponseEntity<Employee>
      */
     @PutMapping("/update/{employeeId}")

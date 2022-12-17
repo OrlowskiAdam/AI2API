@@ -13,7 +13,7 @@ public interface EmployeeService {
 
     Employee getEmployeeById(Long id);
 
-    Employee createEmployee(String name, String surname, Long pesel, Company company, List<Position> position);
+    Employee createEmployee(String name, String surname, Long pesel, double salary, Company company, List<Position> position);
 
     Employee addEmployeeToCompany(Employee employee, Company companies, List<Position> positions);
 
