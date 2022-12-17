@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/position")
+@CrossOrigin
 public class PositionController {
     private final CompanyService companyService;
     private final PositionService positionService;

@@ -14,6 +14,7 @@ import java.util.Set;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/company")
+@CrossOrigin
 public class CompanyController {
     private final CompanyService companyService;
 
