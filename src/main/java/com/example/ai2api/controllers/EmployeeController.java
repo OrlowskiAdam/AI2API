@@ -33,6 +33,11 @@ public class EmployeeController {
         Employee employee = employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(employee);
     }
+    @GetMapping("/employees")
+    public ResponseEntity<List<Employee>> getAllEmployees(){
+        List<Employee> employees = employeeService.getAllEmployees();
+        return ResponseEntity.ok(employees);
+    }
 
     @PostMapping
     public ResponseEntity<Employee> createEmployee(@RequestBody CreateEmployee createEmployee) {

@@ -96,4 +96,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         positions.forEach(position -> position.getEmployees().add(employee));
         return employeeRepository.save(employee);
     }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
 }

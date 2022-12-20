@@ -24,4 +24,6 @@ public interface EmployeeService {
     Employee updateEmployee(Long id, String name, String surname, double salary);
 
     Employee setEmployeePositions(Employee employee, Company company, List<Position> positions);
+
+    List<Employee> getAllEmployees();
 }
