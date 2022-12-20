@@ -33,6 +33,11 @@ public class EmployeeController {
         Employee employee = employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(employee);
     }
+    /**
+     * The function returns a list of all employees in the database
+     *
+     * @return A list of employees
+     */
     @GetMapping("/employees")
     public ResponseEntity<List<Employee>> getAllEmployees(){
         List<Employee> employees = employeeService.getAllEmployees();

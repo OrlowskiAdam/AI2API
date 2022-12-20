@@ -97,6 +97,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    /**
+     * > The function returns a list of all employees in the database
+     *
+     * @return A list of all employees
+     */
     @Override
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
