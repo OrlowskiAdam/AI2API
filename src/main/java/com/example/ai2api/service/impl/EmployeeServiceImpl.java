@@ -91,9 +91,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee setEmployeePositions(Employee employee, Company company, List<Position> positions) {
+        employee.getPositions().forEach(position -> position.getEmployees().clear());
         employee.getPositions().clear();
-        employee.getPositions().addAll(positions);
-        positions.forEach(position -> position.getEmployees().add(employee));
+        for (Position position : positions) {
+            if (!company.getPositions().contains(position)) {
+                throw new BadRequestException("Position not found in company");
+            }
+            boolean hasPosition = hasEmployeePosition(employee, position);
+            if (hasPosition) continue;
+            employee.getPositions().add(position);
+            position.getEmployees().add(employee);
+        }
         return employeeRepository.save(employee);
     }
 
@@ -106,4 +114,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
+
+    /**
+     * Return true if the employee has the position
+     *
+     * @param employee The employee to check for the position.
+     * @param position The position to check for.
+     * @return A boolean value.
+     */
+    @Override
+    public boolean hasEmployeePosition(Employee employee, Position position) {
+        return employee.getPositions()
+                .stream()
+                .anyMatch(p -> p.getId().equals(position.getId()));
+    }
+
 }
