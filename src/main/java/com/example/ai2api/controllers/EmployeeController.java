@@ -38,7 +38,7 @@ public class EmployeeController {
      *
      * @return A list of employees
      */
-    @GetMapping("/employees")
+    @GetMapping("/all")
     public ResponseEntity<List<Employee>> getAllEmployees(){
         List<Employee> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
