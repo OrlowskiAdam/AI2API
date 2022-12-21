@@ -18,6 +18,14 @@ import java.util.List;
 @NoArgsConstructor
 public class Employee {
 
+    public Employee(String name, String surname, Long pesel, double salary, Company company) {
+        this.name = name;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.salary = salary;
+        this.companies = new ArrayList<>(Collections.singletonList(company));
+    }
+
     public Employee(String name, String surname, Long pesel, double salary, Company company, List<Position> positions) {
         this.name = name;
         this.surname = surname;
