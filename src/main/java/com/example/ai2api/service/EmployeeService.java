@@ -26,4 +26,5 @@ public interface EmployeeService {
     Employee setEmployeePositions(Employee employee, Company company, List<Position> positions);
 
     List<Employee> getAllEmployees();
+    boolean hasEmployeePosition(Employee employee, Position position);
 }
