@@ -6,11 +6,13 @@ import com.example.ai2api.model.Company;
 import com.example.ai2api.model.Employee;
 import com.example.ai2api.model.Position;
 import com.example.ai2api.repository.EmployeeRepository;
+import com.example.ai2api.repository.PositionRepository;
 import com.example.ai2api.service.CompanyService;
 import com.example.ai2api.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,6 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final CompanyService companyService;
 
     private final EmployeeRepository employeeRepository;
+    private final PositionRepository positionRepository;
 
     @Override
     public List<Employee> getCompanyEmployees(Long companyId) {
@@ -56,6 +59,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (isInCompany) {
             throw new BadRequestException("Employee is already in company");
         }
+        positions.forEach(position -> position.getEmployees().add(employee));
         employee.getCompanies().add(companies);
         employee.getPositions().addAll(positions);
         return employeeRepository.save(employee);
