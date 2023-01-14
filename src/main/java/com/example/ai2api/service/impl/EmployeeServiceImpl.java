@@ -9,6 +9,7 @@ import com.example.ai2api.repository.EmployeeRepository;
 import com.example.ai2api.service.CompanyService;
 import com.example.ai2api.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.validator.internal.constraintvalidators.hv.pl.PESELValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,6 +46,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(String name, String surname, Long pesel, double salary, Company company, List<Position> position) {
+        if (salary < 0) {
+            throw new BadRequestException("Salary cannot be less than 0");
+        }
+        if (pesel < 0 || pesel.toString().length() != 11) {
+            throw new BadRequestException("PESEL is not valid");
+        }
         Employee employee = new Employee(name, surname, pesel, salary, company, position);
         return employeeRepository.save(employee);
     }
@@ -74,6 +81,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployee(Long id, String name, String surname, double salary) {
+        if (salary < 0) {
+            throw new BadRequestException("Salary cannot be less than 0");
+        }
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
         if (name != null && !name.isEmpty()) {
