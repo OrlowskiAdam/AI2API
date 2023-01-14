@@ -48,14 +48,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee createEmployee(String name, String surname, Long pesel, double salary, Company company, List<Position> position) {
+    public Employee createEmployee(String name, String surname, Long pesel, double salary, Company company) {
         if (salary < 0) {
             throw new BadRequestException("Salary cannot be less than 0");
         }
         if (pesel < 0 || pesel.toString().length() != 11) {
             throw new BadRequestException("PESEL is not valid");
         }
-        Employee employee = new Employee(name, surname, pesel, salary, company, position);
+        Employee employee = new Employee(name, surname, pesel, salary, company);
         return employeeRepository.save(employee);
     }
 
