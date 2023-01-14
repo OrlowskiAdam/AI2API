@@ -50,14 +50,12 @@ public class EmployeeController {
     @PostMapping
     public ResponseEntity<Employee> createEmployee(@RequestBody CreateEmployee createEmployee) {
         Company company = companyService.getCompanyById(createEmployee.getCompanyId());
-        List<Position> positions = positionService.getCompanyPositionsById(company, createEmployee.getPositionIds());
         Employee employee = employeeService.createEmployee(
                 createEmployee.getName(),
                 createEmployee.getSurname(),
                 createEmployee.getPesel(),
                 createEmployee.getSalary(),
-                company,
-                positions
+                company
         );
         return ResponseEntity.ok(employee);
     }
