@@ -27,6 +27,5 @@ public class UserController {
 
     @PostMapping("/login")
     public void login(@RequestBody LoginCredentials credentials) {
-        System.out.println();
     }
 }
