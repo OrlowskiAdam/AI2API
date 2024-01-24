@@ -1,6 +1,8 @@
 spring:
   mvc:
     throw-exception-if-no-handler-found: true
+    pathmatch:
+      matching-strategy: ant_path_matcher
   web:
     resources:
       add-mappings: false
@@ -15,3 +17,18 @@ cors:
 jwt:
   secret: secret_code
   expirationTime: 30h
+
+files-storage:
+  path: 'AI2API/src/main/resources/files'
+
+mail:
+  admin: carclinic.superuser@gmail.com
+  sender:
+    password: jeaxxqzekdimquqx
+    debug: false
+    user: carclinic.superuser@gmail.com
+    host: smtp.gmail.com
+    port: 587
+  register:
+    subject: 'Zostałeś pomyślnie zarejestrowany!'
+    pathToMessage: '/content/mail/register_pl.html'

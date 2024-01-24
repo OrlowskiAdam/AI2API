@@ -3,17 +3,14 @@ package com.example.ai2api.controllers;
 import com.example.ai2api.model.Company;
 import com.example.ai2api.model.Employee;
 import com.example.ai2api.model.Position;
-import com.example.ai2api.payload.*;
+import com.example.ai2api.dto.*;
 import com.example.ai2api.service.CompanyService;
 import com.example.ai2api.service.EmployeeService;
 import com.example.ai2api.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController

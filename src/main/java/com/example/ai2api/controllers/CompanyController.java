@@ -1,15 +1,14 @@
 package com.example.ai2api.controllers;
 
 import com.example.ai2api.model.Company;
-import com.example.ai2api.payload.CreateCompany;
-import com.example.ai2api.payload.UpdateCompany;
+import com.example.ai2api.dto.CreateCompany;
+import com.example.ai2api.dto.UpdateCompany;
 import com.example.ai2api.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor

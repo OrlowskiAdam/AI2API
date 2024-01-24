@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = UserEmailValidator.class)
 public @interface UserEmail {
 
-    String message() default "player.email.isBusy";
+    String message() default "user.email.isBusy";
 
     Class<?>[] groups() default {};
 

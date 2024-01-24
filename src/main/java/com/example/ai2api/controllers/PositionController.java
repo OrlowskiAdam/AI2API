@@ -2,10 +2,10 @@ package com.example.ai2api.controllers;
 
 import com.example.ai2api.model.Company;
 import com.example.ai2api.model.Position;
-import com.example.ai2api.payload.CreatePosition;
-import com.example.ai2api.payload.DeletePositions;
-import com.example.ai2api.payload.GetCompanyPositions;
-import com.example.ai2api.payload.UpdatePosition;
+import com.example.ai2api.dto.CreatePosition;
+import com.example.ai2api.dto.DeletePositions;
+import com.example.ai2api.dto.GetCompanyPositions;
+import com.example.ai2api.dto.UpdatePosition;
 import com.example.ai2api.service.CompanyService;
 import com.example.ai2api.service.PositionService;
 import lombok.RequiredArgsConstructor;

@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = UserLoginValidator.class)
 public @interface UserLogin {
 
-    String message() default "player.login.isBusy";
+    String message() default "user.login.isBusy";
 
     Class<?>[] groups() default {};
 
