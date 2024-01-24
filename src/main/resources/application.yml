@@ -8,3 +8,10 @@ server:
   error:
     include-message: always
     include-binding-errors: always
+  port: 8081
+
+cors:
+  allowUrl: "*"
+jwt:
+  secret: secret_code
+  expirationTime: 30h
